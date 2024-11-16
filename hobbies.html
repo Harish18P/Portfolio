@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies & Achievements - Harish P</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times new Roman';
+        }
+
+        body {
+            background: #0a192f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        nav {
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 25, 47, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #64ffda, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #64ffda;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hobbies-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hobbies-section, .achievements-section {
+            margin: 4rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #64ffda;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #64ffda, transparent);
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .hobby-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
+        }
+
+        .hobby-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-card h3 {
+            color: #64ffda;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-card p {
+            color: #8892b0;
+            line-height: 1.6;
+        }
+
+        .achievements-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: scale(1.02);
+        }
+
+        .achievement-item h3 {
+            color: #64ffda;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-item .date {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #64ffda;
+            color: #0a192f;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hobby-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hobby-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #64ffda, #00bcd4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            text-align: justify;
+        }
+
+        .hobby-card:hover::before {
+            opacity: 0.1;
+            text-align: justify;
+        }
+
+        .p {
+            text-align: justify;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="logo">Harish P</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="hobbies.html" class="active">Hobbies</a></li>
+                    <li><a href="FAQ.html">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hobbies-content">
+        <section class="hobbies-section">
+            <h2>Hobbies</h2>
+            <div class="hobby-grid">
+                <div class="hobby-card">
+                    <img src="c.jpeg" alt="Cricket">
+                    <h3>Cricket</h3>
+                    <div class="p">Passionate cricket player with experience in school level district tournaments. Love both batting and bowling, 
+                        specializing in pace bowling techniques. Avid watcher and Analyzer of the game. Aiming to be a cricket analyst in the future.</div>
+                </div>
+                <div class="hobby-card">
+                    <img src="p.jpeg" alt="Poetry">
+                    <h3>Poetry</h3>
+                    <div class="p">Creating verses that capture emotions, dreams and experiences. Have penned over 60 verses. Published a book name 
+                       "Epitome of Emotions".</div>
+                </div>
+                <div class="hobby-card">
+                    <img src="q.jpeg" alt="Quizzing">
+                    <h3>Quizzing</h3>
+                    <div class="p">Active participant in quiz competitions. Multiple-time finalist in regional quiz competitions in the city of Coimbatore, 
+                    Tamil Nadu.</div>
+                </div>
+                <div class="hobby-card">
+                    <img src="n.jpeg" alt="Numismatics">
+                    <h3>Numismatics</h3>
+                    <div class="p">Dedicated coin collector with a growing collection of rare Indian and foreign coins and currency notes from 
+                        different historical periods.</div>
+                </div>
+                <div class="hobby-card">
+                    <img src="r.jpeg" alt="Reading">
+                    <h3>Reading</h3>
+                    <div class="p">Avid reader with a diverse taste in literature, from classic novels to contemporary fiction. Particular interest in historical 
+                        fiction and thriller books.</div>
+                </div>
+                <div class="hobby-card">
+                    <img src="m.jpeg" alt="Music and Singing">
+                    <h3>Music and Singing</h3>
+                    <div class="p">Love to listen various kinds and languages of music. Also, sing in a very small group of people</div>
+                </div>
+                <div class="hobby-card">
+                    <img src="ch.jpeg" alt="Music and Singing">
+                    <h3>Chess</h3>
+                    <div class="p">Love to play chess to retain the focus while taking break. Started to play since the age of 7. Played over 6500 games over the past
+                    one and a half years</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements-section">
+            <h2>Achievements</h2>
+            <div class="achievements-timeline">
+                <div class="achievement-item">
+                    <h3>Merit Award</h3>
+                    <p>Achieved one of the Highest Grades in the entire course group</p>
+                    <span class="date">2024</span>
+                </div>
+                <div class="achievement-item">
+                    <h3>Merit Award</h3>
+                    <p>Achieved pne of the Highest Grades in the entire course group</p>
+                    <span class="date">2023</span>
+                </div>
+                <div class="achievement-item">
+                    <h3>Published a Book</h3>
+                    <p>Published a collection of poems named "Epitome of Emotions"</p>
+                    <span class="date">2023</span>
+                </div>
+                <div class="achievement-item">
+                    <h3>Runners-Up </h3>
+                    <p>Runners up in a Regional Theatre Competition</p>
+                    <span class="date">2018</span>
+                </div>
+                <div class="achievement-item">
+                    <h3>Gold Medallist</h3>
+                    <p> One of the Gold Medallist in the National Level Hindi Competition</p>
+                    <span class="date">2018</span>
+                </div>
+                <div class="achievement-item">
+                    <h3>National Winner</h3>
+                    <p>Won the national Abacus Championship</p>
+                    <span class="date">2012</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+    <script>
+        window.onload = function() {
+            Particles.init({
+                selector: '#particles-js',
+                color: ['#64ffda', '#00bcd4'],
+                connectParticles: true,
+                responsive: [{
+                    breakpoint: 768,
+                    options: {
+                        maxParticles: 80
+                    }
+                }]
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.hobby-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+
+            // Add hover effect to achievement items
+            document.querySelectorAll('.achievement-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        };
+    </script>
+</body>
+</html>
